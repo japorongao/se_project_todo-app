@@ -1,16 +1,4 @@
-# Simple Todo App
-
-Give a brief description of the project here. Feel free to give it a different name.
-
-## Functionality
-
-Give a more detailed explanation of the project and its functionality.
-
-## Technology
-
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
-
-## Deployment
+Simple Todo App is a task management website that lets users add tasks, set due dates, mark tasks as complete, and delete them. Built with HTML, CSS, and JavaScript, it uses reusable classes and form validation to keep task entry simple.
 
 This project is deployed on GitHub Pages:
 
