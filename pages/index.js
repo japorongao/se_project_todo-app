@@ -4,7 +4,6 @@ console.log(uuidv4());
 import { initialTodos, validationConfig } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
 import FormValidator from "../components/FormValidator.js";
-const formValidator = new FormValidator(validationConfig, addTodoForm);
 
 console.log(initialTodos);
 console.log(validationConfig);
