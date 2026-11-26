@@ -1,15 +1,30 @@
-class PopupWithForm {
-  constructor(popupSelector, handleFormSubmit) {
+class Popup {
+  constructor(popupSelector) {
     this._popupElement = document.querySelector(popupSelector);
-    this._handleFormSubmit = handleFormSubmit;
-    this._form = this._popupElement.querySelector(".popup__form");
-    this._submitButton = this._form.querySelector(".popup__submit");
-    this._submitButtonText = this._submitButton.textContent;
+    this._popupCloseButton = this._popupElement.querySelector(".popup__close");
+
+    this._handleEscClose = (evt) => {
+      if (evt.key === "Escape") {
+        this.close();
+      }
+    };
   }
 
   open() {
-    modal.classList.add("popup_visible");
+    this._popupElement.classList.add("popup_visible");
     document.addEventListener("keydown", this._handleEscClose);
   }
+
+  close() {
+    this._popupElement.classList.remove("popup_visible");
+    document.removeEventListener("keydown", this._handleEscClose);
+  }
+
+  setEventListeners() {
+    this._popupCloseButton.addEventListener("click", () => {
+      this.close();
+    });
+  }
 }
-export default PopupWithForm;
+
+export default Popup;

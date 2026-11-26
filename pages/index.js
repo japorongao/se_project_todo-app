@@ -18,6 +18,8 @@ const addTodoPopup = new PopupWithForm({
   },
 });
 
+addTodoPopup.setEventListeners();
+
 const section = new Section({
   items: initialTodos,
   renderer: (item) => renderTodo(item),
@@ -36,38 +38,15 @@ function closeModal(modal) {
 
 function generateTodo(data) {
   const todo = new Todo(data, "#todo-template");
-  const todoElement = todo.getView();
-  return todoElement;
+  return todo.getView();
 }
 
 function renderTodo(item) {
-  const todo = generateTodo(item);
-  todosList.append(todo);
+  return generateTodo(item);
 }
 
 addTodoButton.addEventListener("click", () => {
-  openModal(addTodoPopupEl);
-});
-
-addTodoCloseBtn.addEventListener("click", () => {
-  closeModal(addTodoPopupEl);
-});
-
-addTodoForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-
-  const name = evt.target.name.value;
-  const dateInput = evt.target.date.value;
-
-  const date = new Date(dateInput);
-  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-
-  const id = uuidv4();
-  const values = { name, date, id };
-
-  renderTodo(values);
-  newTodoValidator.resetValidation();
-  closeModal(addTodoPopupEl);
+  addTodoPopup.open();
 });
 
 initialTodos.forEach(renderTodo);
