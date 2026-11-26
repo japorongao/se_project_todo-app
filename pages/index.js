@@ -41,6 +41,17 @@ function generateTodo(data) {
   return todo.getView();
 }
 
+function handleEscapeClose(evt) {
+  if (evt.key === "Escape") {
+    addTodoPopup.close();
+    document.removeEventListener("keyup", handleEscapeClose);
+  }
+}
+
+addTodoButton.addEventListener("click", () => {
+  addTodoPopup.open();
+});
+
 function renderTodo(item) {
   return generateTodo(item);
 }
